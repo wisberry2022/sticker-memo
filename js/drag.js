@@ -26,9 +26,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
       const post = new Post(e);
       const newElem = post.getPost();
-      post.addEvent('modifiable', (e) => {
-        console.log('hihi');
-      }, 'click');
 
       if (postArr.length >= maxPost) {
         postArr.shift().remove();
