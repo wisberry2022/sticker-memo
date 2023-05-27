@@ -1,6 +1,10 @@
+// 스티커 메모를 생성하는 클래스
+
 export default class Post {
-  
+
   #postElem;
+
+  // 스티커 메모의 제목을 생성
 
   static createTitle() {
     let postTitle = document.createElement("h3");
@@ -9,7 +13,7 @@ export default class Post {
 
     Post.addEvent(postTitle, e => {
       let before = e.target;
-      let after = Post.makeInputWrapper("div");
+      let after = Post.makeInputWrapper(before.innerText);
       before.innerText = "";
       before.appendChild(after);
     }, 'click');
@@ -17,45 +21,36 @@ export default class Post {
     return postTitle;
   }
 
-  static makeInput() {
-    let div = document.createElement("div");
+  // 글자 클릭 시, 자동으로 입력창 발생하는 메소드
+
+  static makeInputWrapper(beforeValue) {
+    let bV = beforeValue ? beforeValue : " ";
+
+    let wrapper = document.createElement("div");
     let input = document.createElement("input");
     let button = document.createElement("button");
 
-    input.classList.add('sticker-input');
-    button.classList.add('sticker-write');
-    button.innerText = "작성";
-
-    div.appendChild(input);
-    div.appendChild(button);
-
-    return div;
-  }
-
-
-  static makeInputWrapper(elem) {
-    let wrapper = document.createElement(elem);
-    let input = document.createElement("input");
-    let button = document.createElement("button");
     wrapper.classList.add('sticker-write-box');
+
     input.classList.add('sticker-input');
+    input.value = bV;
     button.classList.add('sticker-write');
-    
     button.innerText = "작성";
-    wrapper.appendChild(input);
-    wrapper.appendChild(button);
 
     Post.addEvent(button, e => {
       let post = e.currentTarget.parentNode.parentNode.parentNode;
       wrapper.remove();
 
       post.children[0].innerText = input.value;
-      
+
     }, 'click')
 
+    wrapper.appendChild(input);
+    wrapper.appendChild(button);
 
     return wrapper;
   }
+
 
   static createBody() {
     let postBody = document.createElement("div");
@@ -66,8 +61,8 @@ export default class Post {
     postBody.appendChild(Post.createList());
     postBody.appendChild(listAddBtn);
     postBody.classList.add('sticker-body');
-    
-    
+
+
     return postBody;
   }
 
@@ -90,10 +85,10 @@ export default class Post {
 
     Post.addEvent(postSubList, e => {
       let before = e.target;
-      let after = Post.makeInput("li");
+      let after = Post.makeInputWrapper(before.innerText);
       before.innerText = "";
       before.appendChild(after);
-      
+
     }, 'click');
 
     postSubList.innerText = "메모가 없습니다. 클릭해서 메모를 등록해보세요";
@@ -124,8 +119,8 @@ export default class Post {
   getPost() {
     return this.#postElem;
   }
-  
-  
-  
+
+
+
 
 }
