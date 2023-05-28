@@ -13,7 +13,7 @@ export default class Post {
 
     Post.addEvent(postTitle, e => {
       let before = e.target;
-      let after = Post.makeInputWrapper(before.innerText);
+      let after = Post.makeInputWrapper(before.innerText, false);
       before.innerText = "";
       before.appendChild(after);
     }, 'click');
@@ -21,9 +21,10 @@ export default class Post {
     return postTitle;
   }
 
+
   // 글자 클릭 시, 자동으로 입력창 발생하는 메소드
 
-  static makeInputWrapper(beforeValue) {
+  static makeInputWrapper(beforeValue, removeFlag) {
     let bV = beforeValue ? beforeValue : " ";
 
     let wrapper = document.createElement("div");
@@ -37,16 +38,35 @@ export default class Post {
     button.classList.add('sticker-write');
     button.innerText = "작성";
 
+    // 메모 수정 버튼 생성
+
     Post.addEvent(button, e => {
       let post = e.currentTarget.parentNode.parentNode.parentNode;
+      let list = e.currentTarget.parentNode.parentNode;
       wrapper.remove();
 
-      post.children[0].innerText = input.value;
+      list.innerText = input.value;
 
     }, 'click')
 
     wrapper.appendChild(input);
     wrapper.appendChild(button);
+
+    // 삭제 버튼 생성
+
+    if (removeFlag) {
+      let deleteBtn = document.createElement("button");
+      deleteBtn.classList.add('list-delete');
+      deleteBtn.innerText = "삭제";
+
+      Post.addEvent(deleteBtn, e => {
+        let list = e.currentTarget.parentNode.parentNode;
+        wrapper.remove();
+        list.remove();
+      }, 'click')
+
+      wrapper.appendChild(deleteBtn);
+    }
 
     return wrapper;
   }
@@ -58,6 +78,15 @@ export default class Post {
 
     listAddBtn.classList.add('list-add');
     listAddBtn.innerHTML = "<i class='xi-plus'></i>";
+
+    Post.addEvent(listAddBtn, e => {
+      let target = e.currentTarget.parentNode;
+      let list = target.children[0];
+
+      list.appendChild(Post.createSubList());
+
+    }, 'click');
+
     postBody.appendChild(Post.createList());
     postBody.appendChild(listAddBtn);
     postBody.classList.add('sticker-body');
@@ -85,7 +114,7 @@ export default class Post {
 
     Post.addEvent(postSubList, e => {
       let before = e.target;
-      let after = Post.makeInputWrapper(before.innerText);
+      let after = Post.makeInputWrapper(before.innerText, true);
       before.innerText = "";
       before.appendChild(after);
 

@@ -32,8 +32,8 @@ h1 {
 
 .post {
   position: absolute;
-  width: 300px;
-  height: 300px;
+  width: 30rem;
+  height: 30rem;
   background-color: #ECF433;
 }
 
@@ -45,8 +45,13 @@ h1 {
 }
 
 .post .sticker-body {
-  padding: 10px;
+  padding: 1rem 1rem 1rem 2rem;
   height: 85%;
+  overflow-y: scroll;
+}
+
+.post .sticker-body::-webkit-scrollbar {
+  display: none;
 }
 
 .post .sticker-body .memo {
@@ -65,19 +70,24 @@ h1 {
   gap: 5px;
 }
 
-.post .sticker-write-box>.sticker-input {
+.post .sticker-body .sticker-write-box>.sticker-input {
   padding: 5px 2px;
-  width: 60%;
-}
-
-.post .sticker-write-box>.sticker-write {
-  border: .1rem solid #999;
-  padding: .2rem;
-  width: 5rem;
-  background-color: transparent;
+  width: 80%;
 }
 
 .post .sticker-body .list-add {
   margin: 0 auto;
+  border: none;
   width: 100%;
+  font-size: 2rem;
+  background: transparent;
+}
+
+.post .sticker-write-box>.sticker-write,
+.post .sticker-write-box>.list-delete {
+  border: .1rem solid #999;
+  padding: .2rem;
+  width: 3.5rem;
+  font-size: 1.2rem;
+  background: transparent;
 }
