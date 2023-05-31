@@ -1,0 +1,94 @@
+header {
+  height: 15vh;
+}
+
+header>div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+header>div label {
+  font-size: 15px;
+}
+
+header>div label+input {
+  padding: 5px 2px;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.postArea {
+  outline: 1px solid #000;
+  position: relative;
+  width: 100%;
+  height: 85vh;
+}
+
+.post {
+  position: absolute;
+  width: 30rem;
+  height: 30rem;
+  background-color: #ECF433;
+  z-index: 999;
+}
+
+.post .sticker-title {
+  padding: 10px 0;
+  border-bottom: .1rem solid #fff;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.post .sticker-body {
+  padding: 1rem 1rem 1rem 2rem;
+  height: 85%;
+  overflow-y: scroll;
+}
+
+.post .sticker-body::-webkit-scrollbar {
+  display: none;
+}
+
+.post .sticker-body .memo {
+  margin-bottom: 1rem;
+}
+
+.post .sticker-body .memo>li {
+  padding: 2.5px 0;
+  font-size: 12px;
+  text-align: left;
+}
+
+.post .sticker-write-box {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.post .sticker-body .sticker-write-box>.sticker-input {
+  padding: 5px 2px;
+  width: 80%;
+}
+
+.post .sticker-body .list-add {
+  margin: 0 auto;
+  border: none;
+  width: 100%;
+  font-size: 2rem;
+  background: transparent;
+}
+
+.post .sticker-write-box>.sticker-write,
+.post .sticker-write-box>.list-delete {
+  border: .1rem solid #999;
+  padding: .2rem;
+  width: 3.5rem;
+  font-size: 1.2rem;
+  background: transparent;
+}
