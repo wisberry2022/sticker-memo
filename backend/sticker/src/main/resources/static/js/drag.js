@@ -1,5 +1,5 @@
-import {isTarget} from '/DomControl.js';
-import Post from '/Post.js';
+import {isTarget} from '/js/DomControl.js';
+import Post from '/js/Post.js';
 
 window.addEventListener("DOMContentLoaded", () => {
 
