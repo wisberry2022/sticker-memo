@@ -1,20 +1,37 @@
-header {
-  height: 15vh;
+.gnb {
+  position: absolute;
+  top: 50%;
+  left: 1%;
+  transform: translateY(-50%);
+  border-radius: 50rem;
+  padding: .5rem;
+  height: 70vh;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-header>div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
+.gnb>.firstBox {
+  margin-top: 1rem;
+  border-bottom: .1rem solid #ddd;
 }
 
-header>div label {
-  font-size: 15px;
+.gnb>ul {
+  padding: .5rem;
 }
 
-header>div label+input {
-  padding: 5px 2px;
+.gnb>ul>li {
+  padding: 1.5rem 0;
+  font-size: .9rem;
+  text-align: center;
+}
+
+.gnb #postNumber {
+  border: .1rem solid #ddd;
+  width: 3rem;
+  height: 3rem;
+}
+
+.gnb #postNumber:focus {
+  outline: none;
 }
 
 h1 {
@@ -24,10 +41,10 @@ h1 {
 }
 
 .postArea {
-  outline: 1px solid #000;
-  position: relative;
-  width: 100%;
-  height: 85vh;
+  position: absolute;
+  right: 0;
+  width: 95%;
+  height: 100vh;
 }
 
 .post {
