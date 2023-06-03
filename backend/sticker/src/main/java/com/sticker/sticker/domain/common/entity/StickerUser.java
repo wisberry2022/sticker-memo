@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Blob;
-import java.sql.Clob;
 
 @Builder
 @NoArgsConstructor

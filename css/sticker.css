@@ -9,11 +9,6 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-.gnb>.firstBox {
-  margin-top: 1rem;
-  border-bottom: .1rem solid #ddd;
-}
-
 .gnb>ul {
   padding: .5rem;
 }
@@ -24,15 +19,26 @@
   text-align: center;
 }
 
-.gnb #postNumber {
-  border: .1rem solid #ddd;
-  width: 3rem;
-  height: 3rem;
+.gnb>.firstBox {
+  margin-top: 1rem;
+  border-bottom: .1rem solid #ddd;
 }
 
-.gnb #postNumber:focus {
-  outline: none;
+.gnb .numberSetting {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
 }
+
+.gnb .numberSetting>i {
+  margin-top: .4rem;
+  font-size: 1rem;
+}
+
+.gnb #postNumber {
+  font-size: 1.6rem;
+}
+
 
 h1 {
   margin-bottom: 1rem;

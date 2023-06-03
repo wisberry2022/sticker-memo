@@ -39,19 +39,6 @@ public class SecurityConfig {
                     .logoutSuccessUrl("/login")
                     .and().csrf().disable()
                 .build();
-//        return http
-//                                .authorizeRequests()
-//                    .antMatchers("/login", "/authenticate").permitAll()
-//                    .antMatchers("/css/**").permitAll()
-//                    .antMatchers("/js/**").permitAll()
-//                    .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .loginProcessingUrl("/authenticate")
-//                .defaultSuccessUrl("/")
-//                .and().logout()
-//                .logoutSuccessUrl("/login")
-//                .and().build();
     }
 
 }

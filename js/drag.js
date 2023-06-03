@@ -1,22 +1,29 @@
-import {isTarget} from './DomControl.js';
+import { isTarget } from './DomControl.js';
+import PostSetting from './PostSetting.js';
 import Post from './Post.js';
 
 window.addEventListener("DOMContentLoaded", () => {
 
+  let PostCntDom = document.querySelector('#postNumber');
+
   const postArr = [];
   const postArea = document.querySelector(".postArea");
-  const postSet = document.querySelector('#postNumber');
+  const postModify = document.querySelectorAll('.numberSetting i');
 
-  let maxPost = postSet.value;
+  const PostSet = new PostSetting(PostCntDom);
 
-  postSet.addEventListener('change', e => {
-    maxPost = e.currentTarget.value;
-    if (maxPost < postArr.length) {
-      for (let i = 0; i < postArr.length - maxPost; i++) {
-        postArr.shift().remove();
+  postModify.forEach(val => {
+    let calc = val.getAttribute("data-calc");
+    val.addEventListener('click', e => {
+      PostSet.calc(calc);
+      if (PostSet.getMaxPost() < postArr.length) {
+        for (let i = 0; i < postArr.length - PostSet.getMaxPost(); i++) {
+          postArr.shift().remove();
+        }
       }
-    }
-  });
+      document.querySelector('#postNumber').innerText = PostSet.getMaxPost();
+    });
+  })
 
   postArea.addEventListener('click', e => {
 
@@ -27,7 +34,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const post = new Post(e);
       const newElem = post.getPost();
 
-      if (postArr.length >= maxPost) {
+      if (postArr.length >= PostSet.getMaxPost()) {
         postArr.shift().remove();
       }
 

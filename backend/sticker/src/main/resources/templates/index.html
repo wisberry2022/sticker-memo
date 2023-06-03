@@ -6,23 +6,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-  <link rel="stylesheet" href="/css/reset.css">
-  <link rel="stylesheet" href="/css/sticker.css">
-
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/sticker.css">
   <script type="module" src="/js/drag.js"></script>
   <title>Document</title>
 </head>
 
 <body>
-  <header>
-    <h1>스티커 시스템</h1>
-    <div>
-      <label for="postNumber">최대 스티커 개수</label>
-      <input id="postNumber" type="number" value="1" />
-    </div>
-  </header>
+<nav class="gnb">
+  <ul class="firstBox">
+    <li>
+      <h1>Sticker</h1>
+    </li>
+  </ul>
+  <ul class="stickerSettings">
+    <li class="numberSetting">
+      <i class="xi-angle-left-thin" data-calc="sub"></i>
+      <strong id="postNumber">1</strong>
+      <i class="xi-angle-right-thin" data-calc="add"></i>
+    </li>
+  </ul>
+</nav>
 
-  <div class="postArea"></div>
+<div class="postArea"></div>
 </body>
 
 </html>
