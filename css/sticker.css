@@ -1,3 +1,5 @@
+/* gnb css */
+
 .gnb {
   position: absolute;
   top: 50%;
@@ -19,8 +21,16 @@
   text-align: center;
 }
 
+.gnb>ul>li>i {
+  font-size: 1.9rem;
+}
+
 .gnb>.firstBox {
   margin-top: 1rem;
+  border-bottom: .1rem solid #ddd;
+}
+
+.gnb>.stickerSettings {
   border-bottom: .1rem solid #ddd;
 }
 
@@ -39,6 +49,11 @@
   font-size: 1.6rem;
 }
 
+.gnb>.logout a {
+  font-size: 1.9rem;
+}
+
+/* 메인 화면 css */
 
 h1 {
   margin-bottom: 1rem;

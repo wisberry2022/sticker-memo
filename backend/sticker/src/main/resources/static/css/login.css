@@ -1,5 +1,4 @@
 #wrapper {
-  /* outline: 1px solid #000; */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -10,6 +9,7 @@
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 #wrapper>.container h2 {
@@ -44,4 +44,10 @@
   background-color: #ECF433;
   border: .1rem solid #ECF433;
   color: #000;
+}
+
+#wrapper .join {
+  display: block;
+  text-align: center;
+  font-size: 1.3rem;
 }
