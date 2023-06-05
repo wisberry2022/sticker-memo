@@ -1,6 +1,5 @@
 package com.sticker.sticker.domain.login.controller;
 
-import com.sticker.sticker.domain.login.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;

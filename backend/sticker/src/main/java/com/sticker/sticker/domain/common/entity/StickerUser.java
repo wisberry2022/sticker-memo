@@ -1,11 +1,14 @@
 package com.sticker.sticker.domain.common.entity;
 
+import com.sticker.sticker.domain.api.sticker.entity.Sticker;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Builder
 @NoArgsConstructor
@@ -33,4 +36,6 @@ public class StickerUser {
     @Column(length=30, nullable = false)
     private String tel;
 
+    @OneToMany(mappedBy = "stickerUser")
+    private List<Sticker> stickers = new ArrayList<>();
 }

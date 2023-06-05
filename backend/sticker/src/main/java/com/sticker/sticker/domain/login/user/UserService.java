@@ -2,7 +2,6 @@ package com.sticker.sticker.domain.login.user;
 
 import com.sticker.sticker.domain.common.repository.UserRepository;
 import com.sticker.sticker.domain.login.entity.projection.LoginProjection;
-import com.sticker.sticker.global.util.auth.PasswordEncrypter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
