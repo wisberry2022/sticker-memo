@@ -39,6 +39,13 @@ window.addEventListener("DOMContentLoaded", () => {
       }
 
       postArr.push(newElem);
+      fetch("/sticker",
+          {
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify({content:"스티커 메모"})
+          })
+          .then(res => console.log(res));
 
       e.currentTarget.appendChild(newElem);
 
