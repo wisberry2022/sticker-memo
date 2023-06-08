@@ -1,11 +1,13 @@
+import Post from "./Post.js";
+
 export default class PostSetting {
 
   #maxPost;
-  #limit;
+  static #limit;
 
   constructor(postDom) {
     this.#maxPost = Number.parseInt(postDom.innerText);
-    this.#limit = 5;
+    Post.limit = 5;
   }
 
   #add() {
@@ -26,6 +28,10 @@ export default class PostSetting {
     } else {
       this.#sub();
     }
+  }
+
+  setLimit(limit) {
+    Post.limit = limit;
   }
 
   getMaxPost() {
