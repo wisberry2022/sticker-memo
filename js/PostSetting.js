@@ -1,17 +1,17 @@
-import Post from "./Post.js";
+import PostLimit from "./PostLimit.js";
 
 export default class PostSetting {
 
   #maxPost;
-  static #limit;
+  #limit;
 
   constructor(postDom) {
     this.#maxPost = Number.parseInt(postDom.innerText);
-    Post.limit = 5;
+    this.#limit = new PostLimit();
   }
 
   #add() {
-    if (this.#maxPost < this.#limit) {
+    if (this.#maxPost < this.#limit.getLimit()) {
       this.#maxPost++;
     }
   }
@@ -30,16 +30,12 @@ export default class PostSetting {
     }
   }
 
-  setLimit(limit) {
-    Post.limit = limit;
+  setMaxPost(max) {
+    this.#maxPost = max;
   }
 
   getMaxPost() {
     return this.#maxPost;
-  }
-
-  getLimit() {
-    return this.#limit;
   }
 
 }

@@ -1,0 +1,86 @@
+.modal-on-body {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.modal-on-body .post {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.modal-frame {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1.5rem;
+    width: 30rem;
+    height: 45rem;
+    z-index: 999;
+    background-color: #f9f9f9;
+}
+
+.modal-active {
+    display: block;
+}
+
+.set-modal .m-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: .1rem solid #d9d9d9;
+}
+
+.m-header>strong {
+    font-size: 1.3rem;
+}
+
+.m-header>i {
+    font-size: 1.9rem;
+}
+
+.set-modal .m-body {
+    height: 83%;
+    padding: 1rem;
+}
+
+.set-modal .m-body .set-lists>li {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.2rem 0;
+}
+
+.set-limit i {
+    font-size: 1.3rem;
+}
+
+.set-limit strong {
+    font-size: 1.5rem;
+}
+
+.set-modal .m-body .set-lists>li .set-title {
+    font-size: 1.5rem;
+}
+
+.set-modal .m-body .set-lists>li .set-desc {
+    font-size: 1.5rem;
+}
+
+.set-modal .m-foot .btn-box {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.set-modal .m-foot .btn-box>button {
+    padding: .5rem;
+    border: none;
+    width: 5rem;
+    font-size: 1.3rem;
+    background-color: #ddd;
+}
+
+.set-modal .m-foot .btn-box>button:first-child {
+    background-color: #111;
+    color: #fff;
+}

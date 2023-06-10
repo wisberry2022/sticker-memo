@@ -144,19 +144,6 @@ export default class Post {
     this.#postElem.style.left = `${event.offsetX}px`;
     this.#postElem.style.top = `${event.offsetY}px`;
 
-    Post.addEvent(this.#postElem, e => {
-      console.log('드래그')
-    }, 'drag')
-
-    Post.addEvent(this.#postElem, e => {
-      console.log('드래그2')
-    }, 'dragstart')
-    
-
-    Post.addEvent(this.#postElem, e => {
-      console.log('드래그3')
-    , 'dragend'});
-
   }
 
   getPost() {

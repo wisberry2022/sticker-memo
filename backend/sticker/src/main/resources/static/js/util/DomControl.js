@@ -5,7 +5,7 @@ const isTarget = (e) => {
   return clicked.length ? true : false;
 }
 
-export { isTarget }
+export {isTarget}
 
 // 클래스 토글을 위한 함수
 

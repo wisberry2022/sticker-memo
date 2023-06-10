@@ -1,4 +1,5 @@
-import { isTarget } from '/js/DomControl.js';
+import { isTarget } from '/js/util/DomControl.js';
+import { saveSticker } from '/js/util/StickerRequest.js';
 import PostSetting from '/js/PostSetting.js';
 import Post from '/js/Post.js';
 
@@ -9,6 +10,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const postArr = [];
   const postArea = document.querySelector(".postArea");
   const postModify = document.querySelectorAll('.numberSetting i');
+
+  let maxPost = Number.parseInt(PostCntDom.innerText);
 
   const PostSet = new PostSetting(PostCntDom);
 
@@ -29,28 +32,28 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (!isTarget(e)) {
 
+      maxPost = Number.parseInt(document.querySelector('#postNumber').innerText);
+      PostSet.setMaxPost(maxPost);
+
+
       // 클릭한 영역이 일반 영역일 경우
 
       const post = new Post(e);
       const newElem = post.getPost();
 
-      if (postArr.length >= PostSet.getMaxPost()) {
-        postArr.shift().remove();
+      if (postArr.length - PostSet.getMaxPost() >= 0) {
+        let delCnt = postArr.length;
+        for(let i = 0; i<=delCnt - PostSet.getMaxPost(); i++) {
+          postArr.shift().remove();
+        }
       }
 
       postArr.push(newElem);
-      fetch("/sticker",
-          {
-                method:"POST",
-                headers:{"Content-Type":"application/json"},
-                body:JSON.stringify({content:"스티커 메모"})
-          })
-          .then(res => console.log(res));
+      saveSticker({content: '스티커 메모'});
 
       e.currentTarget.appendChild(newElem);
 
     }
-
   });
 
 });

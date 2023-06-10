@@ -149,7 +149,8 @@ export default class Post {
     return this.#postElem;
   }
 
-
-
+  getTitle() {
+    return this.#postElem.querySelector('.sticker-title').innerText;
+  }
 
 }

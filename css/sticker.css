@@ -23,6 +23,7 @@
 
 .gnb>ul>li>i {
   font-size: 1.9rem;
+  cursor: pointer;
 }
 
 .gnb>.firstBox {
@@ -102,6 +103,7 @@ h1 {
   font-size: 12px;
   text-align: left;
 }
+
 
 .post .sticker-write-box {
   display: flex;

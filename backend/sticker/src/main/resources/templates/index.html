@@ -8,7 +8,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/sticker.css">
+  <link rel="stylesheet" href="css/modal.css">
   <script type="module" src="/js/drag.js"></script>
+  <script type="module" src="/js/Modal.js"></script>
   <title>Document</title>
 </head>
 
@@ -47,10 +49,7 @@
       <i class="xi-help-o"></i>
     </li>
     <li>
-      <i class="xi-help-o"></i>
-    </li>
-    <li>
-      <i class="xi-help-o"></i>
+      <i class="xi-cog"></i>
     </li>
   </ul>
   <ul class="logout">
@@ -62,7 +61,44 @@
   </ul>
 </nav>
 
+
 <div class="postArea"></div>
+<div class="modal-frame set-modal">
+  <div class="m-header">
+    <strong>환경설정</strong>
+    <i class="xi-close-min"></i>
+  </div>
+  <div class="m-body">
+    <ul class="set-lists">
+      <li>
+        <strong class="set-title">최대 포스트 개수</strong>
+        <div class="set-limit">
+          <i class="xi-angle-left-thin" data-calc="sub"></i>
+          <strong id="limitNumber">1</strong>
+          <i class="xi-angle-right-thin" data-calc="add"></i>
+        </div>
+      </li>
+      <li>
+        <strong class="set-title">title</strong>
+        <strong class="set-desc">content</strong>
+      </li>
+      <li>
+        <strong class="set-title">title</strong>
+        <strong class="set-desc">content</strong>
+      </li>
+      <li>
+        <strong class="set-title">title</strong>
+        <strong class="set-desc">content</strong>
+      </li>
+    </ul>
+  </div>
+  <div class="m-foot">
+    <div class="btn-box">
+      <button>저장</button>
+      <button>취소</button>
+    </div>
+  </div>
+</div>
 </body>
 
 </html>
