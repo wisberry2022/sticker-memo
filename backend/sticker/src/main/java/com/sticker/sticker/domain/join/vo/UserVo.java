@@ -18,6 +18,8 @@ public class UserVo {
     private String name;
     private String tel;
 
+    private int stickerLimit = 5;
+
     public StickerUser toEntity() {
         return StickerUser.builder()
                 .userId(id)
@@ -25,6 +27,7 @@ public class UserVo {
                 .email(email)
                 .name(name)
                 .tel(tel)
+                .stickerLimit(stickerLimit)
                 .build();
     }
 

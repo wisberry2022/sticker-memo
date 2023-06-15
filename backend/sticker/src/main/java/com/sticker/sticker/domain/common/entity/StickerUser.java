@@ -36,6 +36,9 @@ public class StickerUser {
     @Column(length=30, nullable = false)
     private String tel;
 
+    @Column(nullable=false)
+    private int stickerLimit;
+
     @OneToMany(mappedBy = "stickerUser")
     private List<Sticker> stickers = new ArrayList<>();
 }

@@ -1,5 +1,6 @@
 package com.sticker.sticker.domain.api.sticker.controller;
 
+import com.sticker.sticker.domain.api.sticker.dto.StickerUpdateDto;
 import com.sticker.sticker.domain.api.sticker.service.StickerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -28,5 +29,15 @@ public class StickerController {
         return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
+
+    @PutMapping("/title")
+    public ResponseEntity updateStickerTitle(@RequestBody StickerUpdateDto updateDto) {
+        if(stickerService.updateSticker(updateDto)) {
+            return new ResponseEntity(HttpStatus.OK);
+        }
+        return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+
 
 }
