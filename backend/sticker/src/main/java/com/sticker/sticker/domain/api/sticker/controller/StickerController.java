@@ -32,6 +32,7 @@ public class StickerController {
 
     @PutMapping("/title")
     public ResponseEntity updateStickerTitle(@RequestBody StickerUpdateDto updateDto) {
+
         if(stickerService.updateSticker(updateDto)) {
             return new ResponseEntity(HttpStatus.OK);
         }

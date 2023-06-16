@@ -29,6 +29,7 @@ public class StickerService {
         for(Sticker sticker:stickers) {
             if(sticker.getId() == updateData.getId()) {
                 sticker.changeTitle(updateData);
+                stickerRepo.save(sticker);
                 return true;
             }
         }
@@ -44,7 +45,7 @@ public class StickerService {
         StickerUser user = userRepo.findUserByUserId(userName).get();
         List<Sticker> stickers = user.getStickers();
 
-        if(updateData.equals("title")) {
+        if(updateData.getUpdateFlag().equals("title")) {
             return updateTitle(stickers, updateData) ? true : false;
         }else if(updateData.equals("memos")) {
             return true;

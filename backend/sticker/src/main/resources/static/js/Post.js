@@ -1,7 +1,10 @@
+import {updateSticker} from "/js/util/StickerRequest.js";
+
 // 스티커 메모를 생성하는 클래스
 
 export default class Post {
 
+  static #stickerId = 1;
   #postElem;
 
   // 스티커 메모의 제목을 생성
@@ -38,6 +41,7 @@ export default class Post {
     button.classList.add('sticker-write');
     button.innerText = "작성";
 
+
     // 메모 수정 버튼 생성
 
     Post.addEvent(button, e => {
@@ -46,6 +50,16 @@ export default class Post {
       wrapper.remove();
 
       list.innerText = input.value;
+
+      const jsonData = {
+        "id": Number.parseInt(post.getAttribute("data-sticker-id")),
+        "updateFlag": "title",
+        "toBeUpdate": list.innerText
+      };
+
+      console.log(jsonData);
+
+      updateSticker(jsonData);
 
     }, 'click')
 
@@ -141,6 +155,7 @@ export default class Post {
     this.#postElem.appendChild(Post.createBody());
 
     this.#postElem.classList.add('post');
+    this.#postElem.setAttribute('data-sticker-id', Post.#stickerId++);
     this.#postElem.style.left = `${event.offsetX}px`;
     this.#postElem.style.top = `${event.offsetY}px`;
   }

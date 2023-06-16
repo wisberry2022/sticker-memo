@@ -3,7 +3,7 @@
   content: object
  */
 
-const saveSticker = (content) => {
+const saveSticker = content => {
     fetch("/sticker", {
         method: "POST",
         headers: {"Content-Type":"application/json"},
@@ -17,3 +17,18 @@ const saveSticker = (content) => {
 };
 
 export {saveSticker};
+
+const updateSticker = updateData => {
+    fetch("/sticker/title", {
+        method: "PUT",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(updateData)
+    })
+        .then(res => {
+            if(res.status === 200) {
+                return true;
+            }
+        })
+};
+
+export {updateSticker};
