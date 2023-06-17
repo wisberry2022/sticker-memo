@@ -7,13 +7,11 @@ import com.sticker.sticker.domain.api.sticker.repository.StickerMemoRepository;
 import com.sticker.sticker.domain.api.sticker.repository.StickerRepository;
 import com.sticker.sticker.domain.common.entity.StickerUser;
 import com.sticker.sticker.domain.common.repository.UserRepository;
-import com.sticker.sticker.domain.login.entity.projection.LoginProjection;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,32 +23,26 @@ public class StickerService {
     private final StickerMemoRepository stickerMemoRepo;
     private final UserRepository userRepo;
 
-    public boolean updateTitle(List<Sticker> stickers, StickerUpdateDto updateData) {
-        for(Sticker sticker:stickers) {
+    @Transactional
+    public void updateTitle(List<Sticker> stickers, StickerUpdateDto updateData) {
+        stickers.stream().forEach(sticker -> {
             if(sticker.getId() == updateData.getId()) {
                 sticker.changeTitle(updateData);
                 stickerRepo.save(sticker);
-                return true;
             }
-        }
-        return false;
+        });
     }
 
-    @Transactional
-    public boolean updateSticker(StickerUpdateDto updateData) {
 
-        SecurityContext context = SecurityContextHolder.getContext();
-        String userName = context.getAuthentication().getName();
+    public void updateSticker(StickerUpdateDto updateData, String userName) {
 
         StickerUser user = userRepo.findUserByUserId(userName).get();
         List<Sticker> stickers = user.getStickers();
 
         if(updateData.getUpdateFlag().equals("title")) {
-            return updateTitle(stickers, updateData) ? true : false;
+            updateTitle(stickers, updateData);
         }else if(updateData.equals("memos")) {
-            return true;
         }
-        return false;
 
     }
 
@@ -77,6 +69,26 @@ public class StickerService {
             return true;
         }
         return false;
+    }
+
+    @Transactional
+    public long getLatestId(String userName) {
+        Optional<StickerUser> user = userRepo.findUserByUserId(userName);
+        if(user.isPresent()) {
+
+            List<Sticker> stickers = user.get().getStickers();
+
+            if(stickers.isEmpty()) {
+                return 1L;
+            }
+            Sticker sticker = stickers
+                    .stream()
+                    .max(Comparator.comparing(Sticker::getId))
+                    .get();
+            return sticker.getId()+1L;
+        }
+        return 0L;
+
     }
 
 }

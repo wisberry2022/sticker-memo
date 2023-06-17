@@ -13,7 +13,6 @@ public class UserDetail implements UserDetails {
 
     private final LoginProjection user;
 
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> collection = new ArrayList<>();

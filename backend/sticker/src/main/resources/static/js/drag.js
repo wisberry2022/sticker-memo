@@ -1,9 +1,11 @@
 import { isTarget } from '/js/util/DomControl.js';
-import { saveSticker } from '/js/util/StickerRequest.js';
+import { saveSticker, getLatestStickerId } from '/js/util/StickerRequest.js';
 import PostSetting from '/js/PostSetting.js';
 import Post from '/js/Post.js';
 
 window.addEventListener("DOMContentLoaded", () => {
+
+  getLatestStickerId();
 
   let PostCntDom = document.querySelector('#postNumber');
 

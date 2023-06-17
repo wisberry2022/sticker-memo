@@ -1,10 +1,10 @@
-import {updateSticker} from "/js/util/StickerRequest.js";
+import {updateSticker, getLatestStickerId} from "/js/util/StickerRequest.js";
 
 // 스티커 메모를 생성하는 클래스
 
 export default class Post {
 
-  static #stickerId = 1;
+  static #stickerId;
   #postElem;
 
   // 스티커 메모의 제목을 생성
@@ -148,11 +148,16 @@ export default class Post {
     elem.addEventListener(eventType, callback);
   }
 
+  static setStickerId(num){
+    this.#stickerId = num;
+  }
 
   constructor(event) {
     this.#postElem = document.createElement("div");
     this.#postElem.appendChild(Post.createTitle());
     this.#postElem.appendChild(Post.createBody());
+
+    console.log(Post.#stickerId);
 
     this.#postElem.classList.add('post');
     this.#postElem.setAttribute('data-sticker-id', Post.#stickerId++);
